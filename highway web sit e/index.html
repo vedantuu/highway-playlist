@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Desi Highway Radio — 3D Drive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <canvas id="scene"></canvas>
+  <div class="vignette"></div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">▶</span>
+      <div><strong>DESI HIGHWAY</strong><small>RADIO • INDIA DRIVE</small></div>
+    </div>
+    <div class="live"><i></i> LIVE TRAFFIC <span id="trafficCount">18 VEHICLES</span></div>
+    <button class="icon-button" id="soundToggle" title="Toggle ambience">🔊</button>
+  </header>
+  <main class="hud">
+    <section class="left-panel glass">
+      <div class="eyebrow">NOW PLAYING</div>
+      <div class="track-row">
+        <div class="album-art">♫</div>
+        <div class="track-info"><b id="trackTitle">Kesariya</b><span id="trackArtist">Arijit Singh • Bollywood</span>
+        </div>
+      </div>
+      <div class="progress"><span id="progressBar"></span></div>
+      <div class="time-row"><span id="elapsed">0:00</span><span id="duration">3:42</span></div>
+      <div class="player-controls">
+        <button id="shuffle" title="Shuffle">⤨</button><button id="prev" title="Previous">◀◀</button><button
+          class="play" id="play" title="Play / pause">▶</button><button id="next" title="Next">▶▶</button><button
+          id="repeat" title="Repeat">↻</button>
+      </div>
+      <div class="panel-line"></div>
+      <div class="library-heading">
+        <div class="eyebrow">YOUR HIGHWAY MIX</div><button id="addSongsBtn" class="add-song-btn">＋ Add songs</button>
+      </div>
+      <input id="songFiles" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac,.flac" multiple hidden>
+      <div id="playlist" class="playlist"></div>
+      <div class="search-wrap"><span>⌕</span><input id="search" placeholder="Search your songs..." /><button
+          id="clearSearch" title="Clear search">×</button></div>
+      <div class="history-heading"><span>RECENT HISTORY</span><button id="clearHistory">Clear</button></div>
+      <div id="historyList" class="history-list">
+        <div class="history-empty">Songs you search or play will appear here.</div>
+      </div>
+      <p class="tiny-note">Choose songs from your computer. They play directly in your browser.</p>
+    </section>
+    <section class="right-stack">
+      <div class="glass location-card">
+        <div class="eyebrow">CURRENT ROUTE</div><b>NH 27 · GUJARAT</b><span>Rajkot → Jamnagar</span>
+        <div class="route-line"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="weather"><span>☀</span>
+          <div><b id="weatherLabel">Clear skies</b><small>31°C · Daylight drive</small></div><button
+            id="weatherToggle">Change</button>
+        </div>
+      </div>
+      <div class="glass speed-card">
+        <div class="eyebrow">CRUISING SPEED</div>
+        <div class="speed"><strong id="speedValue">82</strong><span>km/h</span></div>
+        <div class="speed-track"><i id="speedMeter"></i></div>
+        <div class="speed-actions"><button id="slower">−</button><span>TRAFFIC FLOW</span><button id="faster">+</button>
+        </div>
+      </div>
+    </section>
+    <div class="bottom-center">
+      <div class="drive-label"><span class="pulse"></span> AUTOPILOT TRAFFIC <small>VEHICLES MOVE AUTOMATICALLY</small>
+      </div>
+      <div class="steering"><button id="left" aria-label="Steer left">←</button>
+        <div class="steer-center">STEER</div><button id="right" aria-label="Steer right">→</button>
+      </div>
+    </div>
+    <div class="bottom-right glass">
+      <div class="eyebrow">DRIVE SETTINGS</div>
+      <div class="setting"><span>Traffic density</span><input id="density" type="range" min="8" max="35" value="18">
+      </div>
+      <div class="setting"><span>Road ambience</span><input id="ambience" type="range" min="0" max="100" value="20">
+      </div>
+      <div class="setting"><span>Camera view</span><button id="cameraToggle">Behind car ↗</button></div>
+    </div>
+  </main>
+  <div class="start-overlay" id="startOverlay">
+    <div class="start-card">
+      <div class="start-logo">DH<span>R</span></div>
+      <div class="eyebrow">YOUR JOURNEY STARTS HERE</div>
+      <h1>Feel the road.<br><em>Find your rhythm.</em></h1>
+      <p>A living 3D Indian highway. Traffic keeps moving, the scenery rolls by, and your playlist rides with you.</p>
+      <button id="startDrive">START YOUR DRIVE <span>→</span></button><small>Best experienced on desktop with sound
+        on.</small>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
